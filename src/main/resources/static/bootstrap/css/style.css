@@ -10843,3 +10843,110 @@ header.masthead .post-heading .meta a {
 article{
 font-family: 'GmarketSansMedium';
 }
+
+header.posts{
+  position: relative;
+  margin-bottom: 3rem;
+  padding-top: calc(8rem + 57px);
+  padding-bottom: 8rem;
+  background: no-repeat center center;
+  background-color: white;
+  background-size: cover;
+  background-attachment: scroll;
+}
+header.posts:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #black;
+  opacity: 0.5;
+}
+header.posts .page-heading,
+header.posts .post-heading,
+header.posts .site-heading {
+  color:black;
+}
+header.posts .page-heading,
+header.posts .site-heading {
+  text-align: center;
+}
+header.posts .page-heading h1, header.posts .page-heading .h1,
+header.posts .site-heading h1,
+header.posts .site-heading .h1 {
+  font-size: 3rem;
+}
+header.posts .page-heading .subheading,
+header.posts .site-heading .subheading {
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height:1;
+  display: block;
+  margin-top: 0.625rem;
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+header.posts .post-heading h1, header.posts .post-heading .h1 {
+  font-size: 2.25rem;
+}
+header.posts .post-heading .meta,
+header.posts .post-heading .subheading {
+  line-height: 1.1;
+  display: block;
+}
+header.posts .post-heading .subheading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0.75rem 0 2rem;
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+header.posts .post-heading .meta {
+  font-size: 1.25rem;
+  font-weight: 300;
+  font-style: italic;
+  font-family: "Lora", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+header.posts .post-heading .meta a {
+  color: #black;
+}
+@media (min-width: 992px) {
+  header.posts {
+    padding-top: 12.5rem;
+    padding-bottom: 12.5rem;
+  }
+  header.posts .page-heading h1, header.posts .page-heading .h1,
+  header.posts .site-heading h1,
+  header.posts .site-heading .h1 {
+    font-size: 5rem;
+  }
+  header.posts .post-heading h1, header.posts .post-heading .h1 {
+    font-size: 3.5rem;
+  }
+  header.posts .post-heading .subheading {
+    font-size: 1.875rem;
+  }
+}
+
+ table, th, td {
+        border: 3px solid #bcbcbc;
+      }
+#edit{
+text-align:right;
+}
+.edit-btn,.delete-btn{
+border-color:#bcbcbc;
+background:white;
+}
+
+
+
+.fit-picture{
+text-align:center;
+flex-direction:column;
+}
+.con{
+width:800px;
+margin:0 auto;
+text-align:center;}
+
