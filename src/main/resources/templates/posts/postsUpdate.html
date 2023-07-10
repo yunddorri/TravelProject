@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+<!-- 내용 -->
+  <h1>글 수정</h1>
+  <div class="container">
+    <form th:action="@{'/posts/' + ${posts.id} + '/update'}" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="_method" value="put" />
+      <input type="hidden" name="id" th:value="${posts.id}" />
+      <div class="form-group row">
+        <label for="inputTitle" class="col-sm-2 col-form-label"><strong>제목</strong></label>
+        <div class="col-sm-10">
+          <input
+                  type="text"
+                  name="title"
+                  class="form-control"
+                  id="inputTitle"
+                  th:value="${posts.title}"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputBody" class="col-sm-2 col-form-label"><strong>내용</strong></label>
+        <div class="col-sm-10">
+            <input
+                    type="text"
+                    name="body"
+                    class="form-control"
+                    id="inputBody"
+                    th:value="${posts.body}"
+            >
+        </div>
+      </div>
+      <!-- 이미지 업로드 -->
+      <div th:if="${#lists.isEmpty(posts.postsImgFormDtoList)}">
+        <div class="form-group" th:each="num: ${#numbers.sequence(1,5)}">
+          <div class="custom-file img-div">
+            <input type="file" class="custom-file-input" name="postsImgFile" accept="image/*">
+            <label class="custom-file-label" th:text="'이미지 ' + ${num}"></label>
+          </div>
+        </div>
+      </div>
+
+      <div th:if="${not #lists.isEmpty(posts.postsImgFormDtoList)}">
+        <div class="form-group" th:each="postsImgFormDto, status: ${posts.postsImgFormDtoList}">
+          <div class="custom-file img-div">
+            <input type="file" class="custom-file-input" name="postsImgFile" accept="image/*">
+            <input type="hidden" name="postsImgIds" th:value="${postsImgFormDto.id}">
+            <label class="custom-file-label" th:text="${postsImgFormDto.oriImgName} ? ${postsImgFormDto.oriImgName} : '이미지'"></label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-auto mr-auto"></div>
+        <div class="col-auto">
+          <input class="btn btn-primary" type="submit" role="button" value="수정" />
+        </div>
+      </div>
+    </form>
+  </div>
+</html>

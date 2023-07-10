@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+<!-- 내용 -->
+<div layout:fragment="content">
+
+  <h1>글 상세 정보</h1>
+
+  <div th:if="${posts != null}">
+    <strong>제목:</strong> <span th:text="${posts.title}"></span>
+  </div>
+  <div th:if="${posts != null}">
+    <strong>내용:</strong> <span th:text="${posts.body}"></span>
+  </div>
+  <div th:if="${posts != null}">
+    <strong>작성시간:</strong> <span th:text="${posts.regTime}"></span>
+  </div>
+
+  <!-- 이미지 표시 -->
+  <div th:if="${posts != null and not #lists.isEmpty(posts.postsImgFormDtoList)}">
+    <h2>이미지 목록</h2>
+    <div th:each="postsImgFormDto : ${posts.postsImgFormDtoList}">
+      <img th:src="${postsImgFormDto.imgUrl}" alt="이미지" />
+    </div>
+  </div>
+
+  <!-- 수정하기 링크 -->
+  <div>
+    <a th:href="@{/posts/{postsId}/update(postsId=${posts.id})}">수정하기</a>
+  </div>
+
+  <!-- 삭제하기 버튼 -->
+  <form th:action="@{/posts/{postsId}(postsId=${posts.id})}" method="post">
+    <input type="hidden" name="_method" value="delete" />
+    <button type="submit" class="btn btn-danger">삭제하기</button>
+  </form>
+
+
+</div>
+</html>

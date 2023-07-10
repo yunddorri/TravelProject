@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+<!-- 사용자 CSS 추가 -->
+<th:block layout:fragment="css">
+  <style>
+    .fieldError {
+      color: #bd2130;
+    }
+  </style>
+</th:block>
+
+<!-- 사용자 스크립트 추가 -->
+<th:block layout:fragment="script">
+
+  <script th:inline="javascript">
+    $(document).ready(function(){
+      var errorMessage = '"' + [[${errorMessage}]] + '"';
+      if(errorMessage !== ""){
+        alert(errorMessage);
+      }
+    });
+  </script>
+
+</th:block>
+
+<div layout:fragment="content">
+
+  <form action="/posts/create" role="form" method="post" th:object="${postsFormDto}" enctype="multipart/form-data">
+    <div class="form-group">
+      <label th:for="title">제목</label>
+      <input type="text" th:field="*{title}" name="title" class="form-control" placeholder="제목을 입력해주세요">
+      <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="fieldError">Incorrect data</p>
+    </div>
+    <div class="form-group">
+      <label th:for="body">내용</label>
+      <input type="text" th:field="*{body}" name="body" class="form-control" placeholder="내용을 입력해주세요">
+      <p th:if="${#fields.hasErrors('body')}" th:errors="*{body}" class="fieldError">Incorrect data</p>
+    </div>
+<!--    <div th:if="${#lists.isEmpty(postsFormDto.postsImgFormDtoList)}">-->
+<!--      <div class="form-group" th:each="num: ${#numbers.sequence(1,5)}">-->
+<!--        <div class="custom-file img-div">-->
+<!--          <input type="file" class="custom-file-input" name="postsImgFile">-->
+<!--          <label class="custom-file-label" th:text="상품이미지 + ${num}"></label>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div th:if = "${not #lists.isEmpty(postsFormDto.postsImgFormDtoList)}">-->
+<!--      <div class="form-group" th:each="postsImgFormDto, status: ${postsFormDto.postsImgFormDtoList}">-->
+<!--        <div class="custom-file img-div">-->
+<!--          <input type="file" class="custom-file-input" name="postsImgFile">-->
+<!--          <input type="hidden" name="postsImgIds" th:value="${postsFormDto.id}">-->
+<!--          <label class="custom-file-label" th:text="${not #strings.isEmpty(postsImgFormDto.oriImgName)} ? ${postsImgFormDto.oriImgName} : '상품이미지' "></label>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+        <div th:if="${#lists.isEmpty(postsFormDto.postsImgFormDtoList)}">
+          <div class="form-group" th:each="num: ${#numbers.sequence(1,5)}">
+            <div class="custom-file img-div">
+              <input type="file" class="custom-file-input" name="postsImgFile">
+              <label class="custom-file-label" th:text="이미지 + ${num}"></label>
+            </div>
+          </div>
+        </div>
+
+        <div th:if="${not #lists.isEmpty(postsFormDto.postsImgFormDtoList)}">
+          <div class="form-group" th:each="postsImgFormDto, status: ${postsFormDto.postsImgFormDtoList}">
+            <div class="custom-file img-div">
+              <input type="file" class="custom-file-input" name="postsImgFile">
+              <input type="hidden" name="postsImgIds" th:value="${postsImgFormDto.id}">
+              <label class="custom-file-label"
+                     th:text="${not #strings.isEmpty(postsImgFormDto.oriImgName)} ? ${postsImgFormDto.oriImgName} : '이미지'"></label>
+            </div>
+          </div>
+        </div>
+
+    <div style="text-align: center">
+      <button type="submit" class="btn btn-primary" style="">Submit</button>
+    </div>
+  </form>
+
+</div>
+
+</html>
