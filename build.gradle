@@ -39,6 +39,9 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-mail:2.7.1'
 
 	implementation group : 'org.modelmapper', name: 'modelmapper', version: '2.3.9'
+
+	// oauth2
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:2.6.2'
 }
 
 tasks.named('test') {
