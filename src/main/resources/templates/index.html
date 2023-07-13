@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -47,67 +47,70 @@
         </div>
     </div>
 </header>
+
+<!--<div th:if="${posts != null and not #lists.isEmpty(posts.postsImgFormDtoList)}">-->
+<!--    <h2>이미지 목록</h2>-->
+<!--    <div th:each="postsImgFormDto : ${posts.postsImgFormDtoList}">-->
+<!--        <img th:src="${postsImgFormDto.imgUrl}" alt="이미지" />-->
+<!--    </div>-->
+<!--</div>-->
+
 <div id="portfolio">
     <div class="container-fluid p-0">
         <div class="row g-0">
             <div class="col-lg-4 col-sm-6">
                 <a href="index.html">
-                    <img class="img-fluid" src="/static/assets/img/portfolio/thumbnails/1.jpg" alt="..." /> </a>
+                    <img class="img-fluid"  th:src="${postsImgFormDto.imgUrl}" alt="이미지" /></a>
                     <div class="portfolio-box-caption">
-                        <div class="project-name">게시글 제목</div>
+                        <div class="project-name" th:text="${posts.title}">게시글 제목</div>
                         <br>
                     </div>
             </div>
             <div class="col-lg-4 col-sm-6">
                 <a href="index.html">
-                    <img class="img-fluid" src="/static/assets/img/portfolio/thumbnails/2.jpg" alt="..." />
-                </a>
+                    <img class="img-fluid"  th:src="${postsImgFormDto.imgUrl}" alt="이미지" /></a>
                     <div class="portfolio-box-caption">
-                        <div class="project-name">게시글 제목</div>
+                        <div class="project-name" th:text="${posts.title}">게시글 제목</div>
                         <Br>
                     </div>
             </div>
             <div class="col-lg-4 col-sm-6">
                 <a href="index.html">
-                    <img class="img-fluid" src="/static/assets/img/portfolio/thumbnails/3.jpg" alt="..." />
-                </a>
+                    <img class="img-fluid"  th:src="${postsImgFormDto.imgUrl}" alt="이미지" /></a>
                     <div class="portfolio-box-caption">
-                        <div class="project-name">게시글 제목</div>
+                        <div class="project-name" th:text="${posts.title}">게시글 제목</div>
                         <br>
                     </div>
-                </a>
+
             </div>
             <div class="col-lg-4 col-sm-6">
                 <a href="index.html">
-                    <img class="img-fluid" src="/static/assets/img/portfolio/thumbnails/4.jpg" alt="..." />
-                </a>
+                    <img class="img-fluid"  th:src="${postsImgFormDto.imgUrl}" alt="이미지" /></a>
                     <div class="portfolio-box-caption">
 
-                        <div class="project-name">게시글 제목</div>
+                        <div class="project-name" th:text="${posts.title}">게시글 제목</div>
                         <br>
                     </div>
-                </a>
+
             </div>
             <div class="col-lg-4 col-sm-6">
                 <a href="index.html">
-                    <img class="img-fluid" src="/static/assets/img/portfolio/thumbnails/5.jpg" alt="..." />
-                </a>
+                    <img class="img-fluid"  th:src="${postsImgFormDto.imgUrl}" alt="이미지" /></a>
                     <div class="portfolio-box-caption">
-                        <div class="project-name">게시글 제목</div>
+                        <div class="project-name" th:text="${posts.title}">게시글 제목</div>
                         <br>
                     </div>
-                </a>
+
             </div>
             <div class="col-lg-4 col-sm-6">
                 <a href="index.html">
-                    <img class="img-fluid" src="/static/assets/img/portfolio/thumbnails/6.jpg" alt="..." />
-                </a>
+                    <img class="img-fluid"  th:src="${postsImgFormDto.imgUrl}" alt="이미지" /></a>
                     <div class="portfolio-box-caption p-3">
 
-                        <div class="project-name">게시글 제목</div>
+                        <div class="project-name" th:text="${posts.title}">게시글 제목</div>
                         <Br>
                     </div>
-                </a>
+
             </div>
         </div>
 

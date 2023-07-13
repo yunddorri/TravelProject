@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -45,25 +45,25 @@
 <article class="mb-4">
   <div class="con px-lg-5" >
     <div class="row gx-4 gx-lg-5 justify-content-center" >
-        <table >
+        <table  style="table-layout: fixed">
           <tr>
-            <td colspan="2">제목</td> <td colspan="2" class="user">테스트1-제목</td>
+            <td colspan="2" width="30%">제목</td> <td colspan="2" class="user" th:text="${posts.title}">테스트1-제목</td>
           </tr>
           <tr>
-            <td>작성자</td> <td class="user">길연진</td> <td>작성시간</td> <td class="user">2023-07-09</td>
+            <td>작성자</td> <td class="user"></td> <td th:text="${posts.regTime}">작성시간</td> <td class="user"></td>
           </tr>
           <tr style="overflow:scroll; height:1000px;">
            <td  valign="top" colspan="4" class="user" id="user" >
              <div class="fit-picture">
-               <img src="작성자가 올린 사진데이터.jpg" alt="사진">
+               <img th:src="${postsImgFormDto.imgUrl}" alt="이미지" />
                <hr>
              </div>
-             <h6> 내용 </h6>
+             <h6 th:text="${posts.body}"> 내용 </h6>
 
            </td>
           </tr>
         </table>
-       <a id="edit"><button class="edit-btn">수정</button>
+       <a id="edit"><button class="edit-btn" th:href="@{/posts/{postsId}/update(postsId=${posts.id})}">수정</button>
         <button class="delete-btn">삭제</button></a>
       </div>
       </div>
