@@ -5,11 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-@EnableJpaAuditing
+//@EnableJpaAuditing
 @SpringBootApplication
-@EnableWebMvc
 public class TravelApplication {
 
 	public static void main(String[] args) {
